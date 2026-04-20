@@ -15,8 +15,12 @@
   "type": "commonjs",
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.0",
     "astro": "^5.18.1",
     "gsap": "^3.15.0",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "tailwindcss": "^3.4.19",
     "three": "^0.184.0"
   },
