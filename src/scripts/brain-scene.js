@@ -8,7 +8,17 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.getElementById('scene-container').appendChild(renderer.domElement);
+
+// Set up the scene container explicitly
+const container = document.getElementById('scene-container');
+container.style.display = 'block';
+container.style.width = '100vw';
+container.style.height = '100vh';
+container.style.position = 'fixed';
+container.style.top = '0';
+container.style.left = '0';
+container.style.zIndex = '0';
+container.appendChild(renderer.domElement);
 
 // Digital Brain core - Explodable geometry
 const geometry = new THREE.IcosahedronGeometry(4, 3);
