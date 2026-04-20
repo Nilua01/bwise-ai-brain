@@ -9,9 +9,18 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
+// Add basic lighting so wireframe is visible if camera is too far or material is dark
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
 // Digital Brain core - Explodable geometry
 const geometry = new THREE.IcosahedronGeometry(4, 3);
-const material = new THREE.MeshBasicMaterial({ color: 0x3b82f6, wireframe: true, transparent: true });
+// Use MeshPhongMaterial instead of MeshBasicMaterial for better visibility with lights
+const material = new THREE.MeshPhongMaterial({ color: 0x3b82f6, wireframe: true, transparent: true });
 const brain = new THREE.Mesh(geometry, material);
 scene.add(brain);
 
