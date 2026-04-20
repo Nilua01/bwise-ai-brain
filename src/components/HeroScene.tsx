@@ -21,11 +21,11 @@ export default function HeroScene() {
 
   return (
     <div className="h-screen w-full bg-black fixed top-0 left-0 -z-10">
-      <Canvas>
-        <ambientLight intensity={0.5} />
-        <pointLight position={[5, 5, 5]} />
+      <Canvas camera={{ position: [0, 0, 10], fov: 75 }}>
+        <ambientLight intensity={1.5} />
+        <pointLight position={[10, 10, 10]} intensity={2} />
         <Brain />
-        <OrbitControls enableZoom={false} />
+        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={2} />
       </Canvas>
     </div>
   );
