@@ -9,17 +9,6 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Set up the scene container explicitly
-const container = document.getElementById('scene-container');
-container.style.display = 'block';
-container.style.width = '100vw';
-container.style.height = '100vh';
-container.style.position = 'fixed';
-container.style.top = '0';
-container.style.left = '0';
-container.style.zIndex = '0';
-container.appendChild(renderer.domElement);
-
 // Digital Brain core - Explodable geometry
 const geometry = new THREE.IcosahedronGeometry(4, 3);
 const material = new THREE.MeshBasicMaterial({ color: 0x3b82f6, wireframe: true, transparent: true });
@@ -27,6 +16,14 @@ const brain = new THREE.Mesh(geometry, material);
 scene.add(brain);
 
 camera.position.z = 12;
+
+// Wait for DOM to load to append the canvas
+window.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('scene-container');
+    if (container) {
+        container.appendChild(renderer.domElement);
+    }
+});
 
 // Animation logic: "Drift Apart"
 const tl = gsap.timeline({
