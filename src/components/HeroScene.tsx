@@ -5,7 +5,7 @@ import { OrbitControls } from '@react-three/drei';
 function Brain() {
   return (
     <mesh>
-      <icosahedronGeometry args={[4, 3]} />
+      <torusKnotGeometry args={[2, 0.5, 128, 32]} />
       <meshPhongMaterial color="#3b82f6" wireframe />
     </mesh>
   );
