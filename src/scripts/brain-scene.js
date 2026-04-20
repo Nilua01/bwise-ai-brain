@@ -26,13 +26,16 @@ scene.add(brain);
 
 camera.position.z = 12;
 
-// Wait for DOM to load to append the canvas
-window.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('scene-container');
-    if (container) {
-        container.appendChild(renderer.domElement);
-    }
-});
+// Export as a function that can be called once the DOM is ready
+export function initHeroBrain() {
+    const container = document.getElementById('hero-scene-container');
+    if (!container) return;
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
+    
+    // ... rest of the code ...
+}
 
 // Animation logic: "Drift Apart"
 const tl = gsap.timeline({

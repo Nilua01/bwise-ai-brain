@@ -1,6 +1,14 @@
 ---
-import HeroScene from './HeroScene';
 ---
 <div class="relative h-screen w-full">
-  <HeroScene client:load />
+  <div id="hero-scene-container" class="relative z-10">
+    <slot name="fallback">
+        <div class="absolute inset-0 bg-black"></div>
+    </slot>
+  </div>
 </div>
+
+<script>
+  import { initHeroBrain } from '../scripts/brain-scene';
+  initHeroBrain();
+</script>
